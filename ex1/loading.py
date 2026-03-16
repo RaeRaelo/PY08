@@ -2,7 +2,7 @@ import sys
 import importlib
 
 
-RERQUIRED_PACKAGES = {
+REQUIRED_PACKAGES = {
     "pandas": "Data manipulation",
     "numpy": "Numerical computations",
     "matplotlib.pyplot": "Visualization",
@@ -10,13 +10,13 @@ RERQUIRED_PACKAGES = {
 }
 
 
-def check_dependencies():
+def check_dependencies() -> dict:
     print("LOADING STATUS: Loading programs...")
     print("Checking dependencies:")
     all_found = True
     found_packages = {}
 
-    for pkg, desc in RERQUIRED_PACKAGES.items():
+    for pkg, desc in REQUIRED_PACKAGES.items():
         try:
             module = importlib.import_module(pkg)
             version = getattr(module, "__version__", "unknown")
@@ -36,7 +36,7 @@ def check_dependencies():
     return found_packages
 
 
-def run_analysis(modules):
+def run_analysis(modules: dict) -> None:
     pd = modules['pandas']
     np = modules['numpy']
     plt = modules['matplotlib.pyplot']

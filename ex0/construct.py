@@ -3,7 +3,7 @@ import os
 import site
 
 
-def is_venv():
+def is_venv() -> bool:
     if hasattr(sys, 'base_prefix') and sys.base_prefix != sys.prefix:
         return True
     if hasattr(sys, 'real_prefix'):
@@ -13,7 +13,7 @@ def is_venv():
     return False
 
 
-def main():
+def main() -> None:
     if not is_venv():
         print("MATRIX STATUS: You're still plugged in\n")
 
@@ -21,7 +21,7 @@ def main():
         print("Virtual Environment: None detected\n")
 
         print("\033[91m[!] WARNING: You're in the global environment! \033[0m")
-        print("The machines can see everithing you install.")
+        print("The machines can see everything you install.")
         print("\nTo initialize the environment, run:")
         print(" python3 -m venv matrix_env")
         print(" source matrix_env/bin/activate  # On Unix")
